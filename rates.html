@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rates & Services | ZOOM Unisex Salon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES (Brand Palette) --- */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #161616;
+            --zoom-orange: #F37021;
+            --zoom-orange-hover: #ff8640;
+            --text-main: #ffffff;
+            --text-muted: #a3a3a3;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* --- UTILITY CLASSES (Animations) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .btn-primary { background-color: var(--zoom-orange); color: #000; }
+        .btn-primary:hover {
+            background-color: var(--zoom-orange-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(243, 112, 33, 0.2);
+        }
+
+        /* --- HEADER / NAV --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+        .logo span { color: var(--zoom-orange); }
+        nav ul { display: flex; gap: 30px; }
+        nav a { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        nav a:hover, nav a.active { color: var(--zoom-orange); }
+
+        /* --- PAGE HERO --- */
+        .page-hero {
+            padding: 180px 5% 80px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 70%);
+        }
+        .page-hero h1 { font-size: 4rem; margin-bottom: 15px; }
+        .page-hero p { color: var(--zoom-orange); font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+        /* --- PRICING SECTION --- */
+        .pricing-container {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #333;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding-bottom: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0;
+            width: 0%; height: 2px;
+            background-color: var(--zoom-orange);
+            transition: var(--transition);
+        }
+        .tab-btn:hover { color: var(--text-main); }
+        .tab-btn.active { color: var(--text-main); }
+        .tab-btn.active::after { width: 100%; }
+
+        /* PRICING CONTENT */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .tab-content.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 25px 0;
+            border-bottom: 1px dashed #333;
+            transition: var(--transition);
+            position: relative;
+        }
+        /* Hover effect line */
+        .pricing-item::before {
+            content: '';
+            position: absolute;
+            left: -15px; top: 25px; bottom: 25px;
+            width: 3px;
+            background-color: var(--zoom-orange);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        .pricing-item:hover::before { transform: scaleY(1); }
+        .pricing-item:hover { transform: translateX(10px); padding-right: 10px; }
+
+        .service-details { max-width: 70%; }
+        .service-name { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; }
+        .service-desc { color: var(--text-muted); font-size: 0.95rem; }
+        
+        .service-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--zoom-orange);
+            white-space: nowrap;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background-color: var(--bg-card);
+            padding: 80px 5%;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .cta-section p { color: var(--text-muted); margin-bottom: 30px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .tabs { flex-direction: column; align-items: center; gap: 20px; }
+            .pricing-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .service-details { max-width: 100%; }
+            .service-price { align-self: flex-start; font-size: 1.3rem; }
+            .page-hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="logo">ZOOM<span>.</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rates.html" class="active">Rates</a></li>
+                <li><a href="#">Academy</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="booking.html" class="btn btn-primary">Book Appointment</a>
+    </header>
+
+    <section class="page-hero">
+        <div class="reveal">
+            <p>Menu of Services</p>
+            <h1>Investment in Yourself.</h1>
+        </div>
+    </section>
+
+    <section class="pricing-container reveal delay-1">
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'hair')">Cut & Styling</button>
+            <button class="tab-btn" onclick="openTab(event, 'color')">Colour Studio</button>
+            <button class="tab-btn" onclick="openTab(event, 'treatments')">Treatments</button>
+        </div>
+
+        <div id="hair" class="tab-content active">
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Director's Cut & Style</h3>
+                    <p class="service-desc">Complete consultation, precision wash, cut by our Master Stylist, and signature blow-dry finish.</p>
+                </div>
+                <div class="service-price">Rs. 6,500</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Senior Stylist Cut</h3>
+                    <p class="service-desc">Consultation, wash, tailored cut and professional styling.</p>
+                </div>
+                <div class="service-price">Rs. 4,500</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Premium Mens Grooming</h3>
+                    <p class="service-desc">Precision haircut, hot towel beard sculpting, and scalp massage.</p>
+                </div>
+                <div class="service-price">Rs. 3,500</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Signature Blowout</h3>
+                    <p class="service-desc">Deep cleansing wash followed by a voluminous, long-lasting blow-dry.</p>
+                </div>
+                <div class="service-price">Rs. 3,000</div>
+            </div>
+        </div>
+
+        <div id="color" class="tab-content">
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Balayage / Ombre (Full)</h3>
+                    <p class="service-desc">Hand-painted highlights for a seamless, sun-kissed gradient. Includes Olaplex bonding.</p>
+                </div>
+                <div class="service-price">From Rs. 18,000</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Full Head Tint / Global Color</h3>
+                    <p class="service-desc">All-over premium color application for dramatic transformation or grey coverage.</p>
+                </div>
+                <div class="service-price">From Rs. 12,500</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Root Retouch</h3>
+                    <p class="service-desc">Precision application to blend regrowth seamlessly with existing color.</p>
+                </div>
+                <div class="service-price">Rs. 5,500</div>
+            </div>
+        </div>
+
+        <div id="treatments" class="tab-content">
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Brazilian Keratin Treatment</h3>
+                    <p class="service-desc">Frizz-elimination and intense smoothing lasting up to 4 months.</p>
+                </div>
+                <div class="service-price">From Rs. 20,000</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Hair Botox Restoration</h3>
+                    <p class="service-desc">Deep conditioning anti-aging treatment that repairs damaged fibers and adds extreme gloss.</p>
+                </div>
+                <div class="service-price">From Rs. 15,000</div>
+            </div>
+            <div class="pricing-item">
+                <div class="service-details">
+                    <h3 class="service-name">Luxury Spa & Scalp Detox</h3>
+                    <p class="service-desc">Exfoliating scalp scrub, deep hydration mask, and extended stress-relief massage.</p>
+                </div>
+                <div class="service-price">Rs. 6,000</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="cta-section reveal">
+        <h2>Ready for your transformation?</h2>
+        <p>Bookings require a minimum 24-hour notice. Walk-ins are subject to availability.</p>
+        <a href="booking.html" class="btn btn-primary">Book Your Slot Now</a>
+    </section>
+
+    <script>
+        // Tab Switching Logic
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            let tabContent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Remove active class from all buttons
+            let tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+            
+            // Show current tab and add active class to button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+    </script>
+</body>
+</html>
