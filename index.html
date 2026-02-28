@@ -77,140 +77,288 @@
             transform: translateY(-3px);
         }
 
-        /* --- HEADER / NAV --- */
+        /* --- HEADER / NAV (Mobile First) --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             transition: var(--transition);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
         }
         header.scrolled {
             background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 15px 5%;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
         .logo {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: -1px;
             display: flex;
             align-items: center;
         }
         .logo span { color: var(--zoom-orange); }
-        nav ul { display: flex; gap: 30px; }
-        nav a { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        nav a:hover { color: var(--zoom-orange); }
-
-        /* --- HERO SECTION --- */
-        .hero {
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-main);
+            transition: var(--transition);
+        }
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
             height: 100vh;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 100px 30px 30px;
+            transition: right 0.4s ease;
+            z-index: 1000;
+            border-left: 1px solid #333;
+        }
+        nav.active { right: 0; }
+        nav ul { display: flex; gap: 30px; flex-direction: column; }
+        nav a { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); display: block; padding: 10px 0; }
+        nav a:hover { color: var(--zoom-orange); }
+        .btn { font-size: 0.75rem; padding: 10px 20px; letter-spacing: 1px; }
+        header .btn-primary { display: none; }
+        
+        /* --- HERO SECTION (Mobile First) --- */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 5%;
+            padding: 80px 5% 60px;
             position: relative;
-            background: linear-gradient(to right, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 100%), 
+            background: linear-gradient(to bottom, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.7) 100%), 
                         url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop') center/cover;
         }
-        .hero-content { max-width: 800px; z-index: 2; }
+        .hero-content { max-width: 100%; z-index: 2; }
         .hero-subtitle {
             color: var(--zoom-orange);
             font-family: var(--font-heading);
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: block;
+            font-size: 0.8rem;
         }
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 2.5rem;
             line-height: 1.1;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .hero p {
             color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 500px;
-            margin-bottom: 40px;
+            font-size: 1rem;
+            max-width: 100%;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
-        .hero-btns { display: flex; gap: 20px; }
+        .hero-btns { display: flex; gap: 15px; flex-direction: column; }
 
-        /* --- ABOUT / EXPERIENCE SECTION --- */
+        /* --- ABOUT / EXPERIENCE SECTION (Mobile First) --- */
         .about {
-            padding: 120px 5%;
+            padding: 60px 5%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr;
+            gap: 40px;
             align-items: center;
         }
         .about-img {
             width: 100%;
-            height: 600px;
+            height: 400px;
             object-fit: cover;
             border-radius: 4px;
             filter: grayscale(20%);
             transition: var(--transition);
         }
         .about-img:hover { filter: grayscale(0%); }
-        .about-text h2 { font-size: 3rem; margin-bottom: 30px; }
+        .about-text h2 { font-size: 2rem; margin-bottom: 20px; }
         .about-text h2 span { color: var(--zoom-orange); }
-        .about-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; }
+        .about-text p { color: var(--text-muted); font-size: 1rem; margin-bottom: 15px; line-height: 1.7; }
         
         .stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
             border-top: 1px solid #333;
-            padding-top: 40px;
+            padding-top: 30px;
         }
-        .stat-item h3 { font-size: 2.5rem; color: var(--zoom-orange); }
-        .stat-item p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-item h3 { font-size: 2rem; color: var(--zoom-orange); }
+        .stat-item p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- SERVICES SECTION --- */
+        /* --- SERVICES SECTION (Mobile First) --- */
         .services {
-            padding: 100px 5%;
+            padding: 60px 5%;
             background-color: #050505;
         }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-size: 3rem; }
-        .section-header p { color: var(--zoom-orange); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2rem; }
+        .section-header p { color: var(--zoom-orange); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; font-size: 0.8rem; }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
         .service-card {
             background-color: var(--bg-card);
-            padding: 50px 30px;
+            padding: 40px 25px;
             border-radius: 6px;
             text-align: center;
             border-bottom: 3px solid transparent;
             transition: var(--transition);
         }
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-bottom: 3px solid var(--zoom-orange);
             background-color: #1f1f1f;
         }
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             display: block;
         }
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+        .service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .about { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
-            nav ul { display: none; } /* Hamburger menu would go here in prod */
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: #050505;
+            padding: 80px 5% 20px;
+            border-top: 1px solid var(--border-color, #1a1a1a);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-brand .logo {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover {
+            color: var(--zoom-orange);
+            padding-left: 5px;
+        }
+        .footer-col p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* --- RESPONSIVE (Min-width for larger screens) --- */
+        @media (min-width: 768px) {
+            .logo { font-size: 2rem; }
+            .btn { font-size: 0.9rem; padding: 14px 32px; }
+            .mobile-menu-toggle { display: none; }
+            nav {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                padding: 0;
+                border-left: none;
+                right: 0;
+            }
+            nav ul { flex-direction: row; gap: 30px; }
+            nav a { font-size: 0.9rem; padding: 0; }
+            header .btn-primary { display: inline-block; }
+            .hero { padding: 0 5%; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.1rem; max-width: 500px; }
+            .hero-btns { flex-direction: row; gap: 20px; }
+            .hero-subtitle { font-size: 0.9rem; letter-spacing: 3px; }
+            .about-text h2 { font-size: 2.5rem; }
+            .about-text p { font-size: 1.05rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+            .section-header h2 { font-size: 2.5rem; }
+            .service-card { padding: 45px 28px; }
+        }
+
+        @media (min-width: 1024px) {
+            header { padding: 20px 5%; }
+            .hero h1 { font-size: 4.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .about { grid-template-columns: 1fr 1fr; gap: 60px; padding: 120px 5%; }
+            .about-img { height: 600px; }
+            .about-text h2 { font-size: 3rem; margin-bottom: 30px; }
+            .about-text p { font-size: 1.1rem; }
+            .stats { display: flex; gap: 40px; margin-top: 40px; padding-top: 40px; }
+            .stat-item h3 { font-size: 2.5rem; }
+            .stat-item p { font-size: 0.9rem; }
+            .services { padding: 100px 5%; }
+            .services-grid { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+            .section-header { margin-bottom: 80px; }
+            .section-header h2 { font-size: 3rem; }
+            .service-card { padding: 50px 30px; }
+            .service-icon { font-size: 3rem; margin-bottom: 20px; }
+            .service-card h3 { font-size: 1.5rem; }
+            .service-card p { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -220,7 +368,12 @@
         <div class="logo">
             ZOOM<span>.</span>
         </div>
-        <nav>
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="mobileNav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="rates.html">Rates</a></li>
@@ -289,6 +442,41 @@
             </div>
         </div>
     </section>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">ZOOM<span>.</span></div>
+                <p>Sri Lanka's premier unisex salon. Defining your signature style with uncompromising quality and elegance.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="zoom-rates.html">Services & Rates</a></li>
+                    <li><a href="#">The Academy</a></li>
+                    <li><a href="zoom-booking.html">Book Appointment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>📍 123 Premium Avenue,<br>Colombo 07, Sri Lanka</p>
+                <p>📞 +94 77 123 4567</p>
+                <p>✉️ hello@zoomsalon.lk</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Working Hours</h4>
+                <p><strong>Mon - Sat:</strong><br>9:00 AM - 8:00 PM</p>
+                <p><strong>Sunday & Poya:</strong><br>10:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZOOM Unisex Salon. All Rights Reserved. Designed by You.</p>
+        </div>
+    </footer>
 
     <script>
         // 1. Sticky Header Effect
@@ -322,6 +510,24 @@
 
         revealElements.forEach(el => {
             revealOnScroll.observe(el);
+        });
+
+        // 3. Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = mobileNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
         });
     </script>
 </body>
