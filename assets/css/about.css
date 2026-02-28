@@ -1,0 +1,309 @@
+/* =================================================================
+   About Page Specific Styles
+   ================================================================= */
+
+/* --- PAGE HERO --- */
+.page-hero {
+    padding: 200px 20px 120px;
+    text-align: center;
+    background: linear-gradient(to bottom, #111 0%, var(--bg-dark) 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.page-hero p {
+    color: var(--zoom-orange);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* --- THE STORY SECTION --- */
+.story-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.story-content h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.story-content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.story-quote {
+    border-left: 3px solid var(--zoom-orange);
+    padding-left: 20px;
+    margin: 40px 0;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+.story-image {
+    position: relative;
+}
+
+.story-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(30%) contrast(1.1);
+}
+
+.story-image::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--zoom-orange);
+    z-index: -1;
+}
+
+/* --- CORE VALUES --- */
+.values-section {
+    background-color: #050505;
+    padding: 80px 20%;
+    border-top: 1px solid var(--border-color);
+}
+
+.values-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.values-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.values-header p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.values-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.value-card {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-top: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.value-card:hover {
+    border-top: 3px solid var(--zoom-orange);
+    transform: translateY(-10px);
+    background-color: #1a1a1a;
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--zoom-orange);
+}
+
+.value-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- PARALLAX INTERIOR BANNER --- */
+.interior-banner {
+    height: 60vh;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2622&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.interior-banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 576px) {
+    .page-hero {
+        padding: 200px 30px 120px;
+    }
+    
+    .story-container {
+        padding: 80px 30px;
+    }
+    
+    .values-section {
+        padding: 80px 30px;
+    }
+    
+    .interior-banner {
+        padding: 0 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-hero {
+        padding: 200px 40px 120px;
+    }
+    
+    .page-hero h1 {
+        font-size: 3.5rem;
+    }
+    
+    .page-hero p {
+        font-size: 1rem;
+    }
+    
+    .story-container {
+        padding: 100px 40px;
+        gap: 60px;
+    }
+    
+    .story-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .story-content p {
+        font-size: 1.1rem;
+    }
+    
+    .story-quote {
+        font-size: 1.4rem;
+    }
+    
+    .story-image img {
+        height: 500px;
+    }
+    
+    .values-section {
+        padding: 100px 40px;
+    }
+    
+    .values-header {
+        margin-bottom: 70px;
+    }
+    
+    .values-header h2 {
+        font-size: 2.6rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+    }
+    
+    .value-card {
+        padding: 45px 35px;
+    }
+    
+    .interior-banner {
+        padding: 0 40px;
+    }
+    
+    .interior-banner h2 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .page-hero {
+        padding: 200px 60px 120px;
+    }
+    
+    .page-hero h1 {
+        font-size: 4rem;
+    }
+    
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .story-container {
+        padding: 120px 60px;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+    }
+    
+    .story-image img {
+        height: 600px;
+    }
+    
+    .values-section {
+        padding: 120px 60px;
+    }
+    
+    .values-header {
+        margin-bottom: 80px;
+    }
+    
+    .values-header h2 {
+        font-size: 2.8rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+    
+    .value-card {
+        padding: 50px 40px;
+    }
+    
+    .interior-banner {
+        padding: 0 60px;
+    }
+    
+    .interior-banner h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .story-image::after {
+        display: none;
+    }
+}

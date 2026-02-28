@@ -1,0 +1,320 @@
+/* =================================================================
+   Rates Page Specific Styles
+   ================================================================= */
+
+/* --- PAGE HERO --- */
+.page-hero {
+    padding: 120px 20px 50px;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 70%);
+}
+
+.page-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.page-hero p {
+    color: var(--zoom-orange);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* --- PRICING SECTION --- */
+.pricing-container {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding-bottom: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--zoom-orange);
+    transition: var(--transition);
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    color: var(--text-main);
+}
+
+.tab-btn.active::after {
+    width: 100%;
+}
+
+/* PRICING CONTENT */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pricing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+    border-bottom: 1px dashed #333;
+    transition: var(--transition);
+    position: relative;
+}
+
+.pricing-item::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    bottom: 20px;
+    width: 3px;
+    background-color: var(--zoom-orange);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.pricing-item:hover::before {
+    transform: scaleY(1);
+}
+
+.pricing-item:hover {
+    transform: translateX(5px);
+}
+
+.service-details {
+    max-width: 100%;
+}
+
+.service-name {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.service-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.service-price {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--zoom-orange);
+    white-space: nowrap;
+}
+
+/* --- CTA SECTION --- */
+.cta-section {
+    background-color: var(--bg-card);
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.cta-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.cta-section p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 576px) {
+    .page-hero {
+        padding: 140px 30px 60px;
+    }
+    
+    .pricing-container {
+        padding: 0 30px;
+    }
+    
+    .cta-section {
+        padding: 65px 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-hero {
+        padding: 150px 40px 70px;
+    }
+    
+    .pricing-container {
+        padding: 0 40px;
+    }
+
+    .page-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .page-hero p {
+        font-size: 1rem;
+    }
+
+    .tabs {
+        gap: 30px;
+    }
+
+    .tab-btn {
+        font-size: 1.1rem;
+        padding-bottom: 15px;
+    }
+
+    .pricing-item {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 0;
+        padding: 25px 0;
+    }
+
+    .pricing-item:hover {
+        transform: translateX(10px);
+        padding-right: 10px;
+    }
+
+    .service-details {
+        max-width: 70%;
+    }
+
+    .service-name {
+        font-size: 1.35rem;
+    }
+
+    .service-desc {
+        font-size: 0.95rem;
+    }
+
+    .service-price {
+        font-size: 1.45rem;
+    }
+
+    .cta-section {
+        padding: 70px 40px;
+    }
+
+    .cta-section h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .page-hero {
+        padding: 180px 60px 80px;
+    }
+    
+    .pricing-container {
+        padding: 0 60px;
+    }
+
+    .page-hero h1 {
+        font-size: 4rem;
+    }
+
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+
+    .pricing-container {
+        margin: 0 auto 100px;
+    }
+
+    .tabs {
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+
+    .tab-btn {
+        font-size: 1.2rem;
+    }
+
+    .service-name {
+        font-size: 1.4rem;
+    }
+
+    .service-price {
+        font-size: 1.5rem;
+    }
+
+    .cta-section {
+        padding: 80px 60px;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .cta-section p {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .service-details {
+        max-width: 100%;
+    }
+
+    .service-price {
+        align-self: flex-start;
+        font-size: 1.3rem;
+    }
+
+    .page-hero h1 {
+        font-size: 3rem;
+    }
+}

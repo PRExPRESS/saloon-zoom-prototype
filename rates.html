@@ -5,305 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rates & Services | ZOOM Unisex Salon</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* --- CSS VARIABLES (Brand Palette) --- */
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #161616;
-            --zoom-orange: #F37021;
-            --zoom-orange-hover: #ff8640;
-            --text-main: #ffffff;
-            --text-muted: #a3a3a3;
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* --- BASE STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-
-        /* --- UTILITY CLASSES (Animations) --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            font-family: var(--font-heading);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-        .btn-primary { background-color: var(--zoom-orange); color: #000; }
-        .btn-primary:hover {
-            background-color: var(--zoom-orange-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(243, 112, 33, 0.2);
-        }
-
-        /* --- HEADER / NAV (Mobile First) --- */
-        header {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: var(--transition);
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
-        .logo span { color: var(--zoom-orange); }
-        
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background-color: var(--text-main);
-            transition: var(--transition);
-        }
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translateY(10px);
-        }
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-10px);
-        }
-        
-        nav {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 70%;
-            height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 100px 30px 30px;
-            transition: right 0.4s ease;
-            z-index: 1000;
-            border-left: 1px solid rgba(255,255,255,0.05);
-        }
-        nav.active { right: 0; }
-        nav ul { display: flex; gap: 30px; flex-direction: column; }
-        nav a { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); display: block; padding: 10px 0; }
-        nav a:hover, nav a.active { color: var(--zoom-orange); }
-        .btn { font-size: 0.75rem; padding: 10px 20px; letter-spacing: 1px; }
-        header .btn-primary { display: none; }
-
-        /* --- PAGE HERO (Mobile First) --- */
-        .page-hero {
-            padding: 120px 5% 50px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 70%);
-        }
-        .page-hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
-        .page-hero p { color: var(--zoom-orange); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-
-        /* --- PRICING SECTION (Mobile First) --- */
-        .pricing-container {
-            max-width: 1000px;
-            margin: 0 auto 60px;
-            padding: 0 5%;
-        }
-
-        /* TABS */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #333;
-            flex-wrap: wrap;
-        }
-        .tab-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-family: var(--font-heading);
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding-bottom: 12px;
-            cursor: pointer;
-            position: relative;
-            transition: var(--transition);
-        }
-        .tab-btn::after {
-            content: '';
-            position: absolute;
-            bottom: -1px; left: 0;
-            width: 0%; height: 2px;
-            background-color: var(--zoom-orange);
-            transition: var(--transition);
-        }
-        .tab-btn:hover { color: var(--text-main); }
-        .tab-btn.active { color: var(--text-main); }
-        .tab-btn.active::after { width: 100%; }
-
-        /* PRICING CONTENT */
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-        .tab-content.active { display: block; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .pricing-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 10px;
-            padding: 20px 0;
-            border-bottom: 1px dashed #333;
-            transition: var(--transition);
-            position: relative;
-        }
-        /* Hover effect line */
-        .pricing-item::before {
-            content: '';
-            position: absolute;
-            left: -15px; top: 20px; bottom: 20px;
-            width: 3px;
-            background-color: var(--zoom-orange);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-        .pricing-item:hover::before { transform: scaleY(1); }
-        .pricing-item:hover { transform: translateX(5px); }
-
-        .service-details { max-width: 100%; }
-        .service-name { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
-        .service-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
-        
-        .service-price {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--zoom-orange);
-            white-space: nowrap;
-        /* --- CTA SECTION (Mobile First) --- */
-        .cta-section {
-            background-color: var(--bg-card);
-            padding: 60px 5%;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
-        .cta-section h2 { font-size: 1.8rem; margin-bottom: 15px; line-height: 1.3; }
-        .cta-section p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.6; }
-
-        /* --- RESPONSIVE (Min-width for larger screens) --- */
-        @media (min-width: 768px) {
-            .logo { font-size: 2rem; }
-            .btn { font-size: 0.9rem; padding: 14px 32px; }
-            .mobile-menu-toggle { display: none; }
-            nav {
-                position: static;
-                width: auto;
-                height: auto;
-                background: transparent;
-                padding: 0;
-                border-left: none;
-                right: 0;
-            }
-            nav ul { flex-direction: row; gap: 30px; }
-            nav a { font-size: 0.9rem; padding: 0; }
-            header .btn-primary { display: inline-block; }
-            header { padding: 20px 5%; }
-            .page-hero { padding: 150px 5% 70px; }
-            .page-hero h1 { font-size: 3.5rem; }
-            .page-hero p { font-size: 1rem; }
-            .tabs { gap: 30px; }
-            .tab-btn { font-size: 1.1rem; padding-bottom: 15px; }
-            .pricing-item {
-                flex-direction: row;
-                align-items: flex-end;
-                gap: 0;
-                padding: 25px 0;
-            }
-            .pricing-item:hover { transform: translateX(10px); padding-right: 10px; }
-            .service-details { max-width: 70%; }
-            .service-name { font-size: 1.35rem; }
-            .service-desc { font-size: 0.95rem; }
-            .service-price { font-size: 1.45rem; }
-            .cta-section { padding: 70px 5%; }
-            .cta-section h2 { font-size: 2.2rem; }
-        }
-
-        @media (min-width: 1024px) {
-            .page-hero { padding: 180px 5% 80px; }
-            .page-hero h1 { font-size: 4rem; }
-            .page-hero p { font-size: 1.1rem; }
-            .pricing-container { margin: 0 auto 100px; }
-            .tabs { gap: 40px; margin-bottom: 50px; }
-            .tab-btn { font-size: 1.2rem; }
-            .service-name { font-size: 1.4rem; }
-            .service-price { font-size: 1.5rem; }
-            .cta-section { padding: 80px 5%; }
-            .cta-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
-            .cta-section p { margin-bottom: 30px; }
-        }   .service-details { max-width: 100%; }
-            .service-price { align-self: flex-start; font-size: 1.3rem; }
-            .page-hero h1 { font-size: 3rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/rates.css">
 </head>
 <body>
 
-    <header id="header">
-        <div class="logo">ZOOM<span>.</span></div>
-        <div class="mobile-menu-toggle" id="mobileMenuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav id="mobileNav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rates.html" class="active">Rates</a></li>
-                <li><a href="#">Academy</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <a href="booking.html" class="btn btn-primary">Book Appointment</a>
-    </header>
+    <!-- Navigation Component -->
+    <div data-component="navbar"></div>
 
+    <!-- Page Hero -->
     <section class="page-hero">
         <div class="reveal">
             <p>Menu of Services</p>
@@ -311,6 +21,7 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
     <section class="pricing-container reveal delay-1">
         
         <div class="tabs">
@@ -400,63 +111,22 @@
 
     </section>
 
+    <!-- CTA Section -->
     <section class="cta-section reveal pricing-container">
         <h2>Ready for your transformation?</h2>
         <p>Bookings require a minimum 24-hour notice. Walk-ins are subject to availability.</p>
         <a href="booking.html" class="btn btn-primary">Book Your Slot Now</a>
     </section>
 
-    <script>
-        // Tab Switching Logic
-        function openTab(evt, tabName) {
-            // Hide all tab content
-            let tabContent = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
-            
-            // Remove active class from all buttons
-            let tabBtns = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabBtns.length; i++) {
-                tabBtns[i].classList.remove("active");
-            }
-            
-            // Show current tab and add active class to button
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
+    <!-- Footer Component -->
+    <div data-component="footer"></div>
 
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, revealOptions);
+    <!-- FAB Component -->
+    <div data-component="fab"></div>
 
-        revealElements.forEach(el => revealOnScroll.observe(el));
-
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenuToggle.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = mobileNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
-            });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/rates.js"></script>
 </body>
 </html>
