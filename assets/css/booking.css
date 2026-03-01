@@ -75,7 +75,7 @@
 
 .service-select-card {
     border: 2px solid var(--border-color);
-    background-color: #0f0f0f;
+    background-color: var(--bg-card);
     padding: 18px;
     border-radius: 6px;
     cursor: pointer;
@@ -83,10 +83,12 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    box-shadow: var(--shadow-light);
 }
 
 .service-select-card:hover {
-    border-color: #555;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
 }
 
 .service-select-card.selected {
@@ -124,7 +126,7 @@
 .form-control {
     width: 100%;
     padding: 13px;
-    background-color: #0f0f0f;
+    background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     color: var(--text-main);
     border-radius: 4px;
@@ -152,11 +154,12 @@ textarea.form-control {
 
 /* --- SIDEBAR INFO/POLICIES --- */
 .sidebar-card {
-    background-color: #0d0d0d;
+    background-color: var(--bg-section);
     padding: 30px 25px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     position: static;
+    box-shadow: var(--shadow-light);
 }
 
 .sidebar-card h3 {

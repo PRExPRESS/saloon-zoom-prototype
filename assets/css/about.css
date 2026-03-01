@@ -6,7 +6,7 @@
 .page-hero {
     padding: 200px 20px 120px;
     text-align: center;
-    background: linear-gradient(to bottom, #111 0%, var(--bg-dark) 100%);
+    background: linear-gradient(to bottom, var(--bg-section) 0%, var(--bg-light) 100%);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -85,7 +85,7 @@
 
 /* --- CORE VALUES --- */
 .values-section {
-    background-color: #050505;
+    background-color: var(--bg-section);
     padding: 80px 20%;
     border-top: 1px solid var(--border-color);
 }
@@ -119,12 +119,14 @@
     padding: 40px 30px;
     border-top: 3px solid transparent;
     transition: var(--transition);
+    box-shadow: var(--shadow-light);
+    border-radius: 6px;
 }
 
 .value-card:hover {
     border-top: 3px solid var(--zoom-orange);
     transform: translateY(-10px);
-    background-color: #1a1a1a;
+    box-shadow: var(--shadow-medium);
 }
 
 .value-icon {
@@ -148,7 +150,7 @@
 /* --- PARALLAX INTERIOR BANNER --- */
 .interior-banner {
     height: 60vh;
-    background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2622&auto=format&fit=crop');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2622&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

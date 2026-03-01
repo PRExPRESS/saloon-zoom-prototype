@@ -118,7 +118,7 @@
 
 .credentials li {
     font-size: 0.9rem;
-    color: #ccc;
+    color: var(--text-muted);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
@@ -141,13 +141,16 @@
 .junior-card {
     text-align: center;
     padding: 30px;
-    background-color: #111;
+    background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     transition: var(--transition);
+    box-shadow: var(--shadow-light);
+    border-radius: 6px;
 }
 
 .junior-card:hover {
-    border-color: #444;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
 }
 
 .junior-card h4 {
