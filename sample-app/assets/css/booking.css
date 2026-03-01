@@ -1,0 +1,385 @@
+/* =================================================================
+   Booking Page Specific Styles
+   ================================================================= */
+
+/* --- PAGE HERO --- */
+.page-hero {
+    padding: 100px 20px 40px;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.page-hero p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- BOOKING LAYOUT --- */
+.booking-container {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* --- WIZARD STEPS --- */
+.wizard-step {
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.step-number {
+    background-color: var(--zoom-orange);
+    color: #000;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    margin-right: 12px;
+    font-size: 0.9rem;
+}
+
+.step-title {
+    font-size: 1.2rem;
+}
+
+/* --- SERVICE SELECTION GRID --- */
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.service-select-card {
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-card);
+    padding: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-light);
+}
+
+.service-select-card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.service-select-card.selected {
+    border-color: var(--zoom-orange);
+    background-color: rgba(243, 112, 33, 0.05);
+}
+
+.service-select-card .icon {
+    font-size: 1.8rem;
+}
+
+.service-select-card h4 {
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+
+.service-select-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* --- FORM INPUTS --- */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.form-control {
+    width: 100%;
+    padding: 13px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--zoom-orange);
+    box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* --- SIDEBAR INFO/POLICIES --- */
+.sidebar-card {
+    background-color: var(--bg-section);
+    padding: 30px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    position: static;
+    box-shadow: var(--shadow-light);
+}
+
+.sidebar-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    color: var(--zoom-orange);
+}
+
+.policy-list {
+    margin-bottom: 25px;
+}
+
+.policy-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.policy-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: var(--zoom-orange);
+    font-size: 1.3rem;
+}
+
+.contact-info {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 576px) {
+    .page-hero {
+        padding: 120px 30px 40px;
+    }
+    
+    .booking-container {
+        padding: 0 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-hero {
+        padding: 130px 40px 45px;
+    }
+    
+    .booking-container {
+        padding: 0 40px;
+    }
+
+    .page-hero h1 {
+        font-size: 3rem;
+    }
+
+    .page-hero p {
+        font-size: 1.05rem;
+    }
+
+    .wizard-step {
+        padding: 35px;
+        margin-bottom: 25px;
+    }
+
+    .step-title {
+        font-size: 1.4rem;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .service-select-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .service-select-card h4 {
+        font-size: 1.05rem;
+    }
+
+    .service-select-card p {
+        font-size: 0.85rem;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .sidebar-card {
+        padding: 35px 30px;
+    }
+
+    .sidebar-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 23px;
+    }
+
+    .policy-list li {
+        font-size: 0.88rem;
+        margin-bottom: 14px;
+    }
+
+    .contact-info p {
+        font-size: 0.93rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .page-hero {
+        padding: 150px 60px 50px;
+    }
+    
+    .booking-container {
+        padding: 0 60px;
+    }
+
+    .page-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+
+    .booking-container {
+        grid-template-columns: 1.8fr 1fr;
+        gap: 50px;
+        margin-bottom: 100px;
+    }
+
+    .wizard-step {
+        padding: 40px;
+        margin-bottom: 30px;
+    }
+
+    .step-header {
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+    }
+
+    .step-number {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        font-size: 1rem;
+    }
+
+    .step-title {
+        font-size: 1.5rem;
+    }
+
+    .service-grid {
+        gap: 20px;
+    }
+
+    .service-select-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .sidebar-card {
+        padding: 40px;
+        position: sticky;
+        top: 100px;
+    }
+
+    .sidebar-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+    }
+
+    .policy-list {
+        margin-bottom: 30px;
+    }
+
+    .policy-list li {
+        padding-left: 25px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+    }
+
+    .policy-list li::before {
+        font-size: 1.5rem;
+    }
+
+    .contact-info {
+        padding-top: 25px;
+    }
+
+    .contact-info p {
+        font-size: 0.95rem;
+        gap: 10px;
+    }
+}

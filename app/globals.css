@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-zoom-orange: #F37021;
+  --color-zoom-orange-hover: #e6661e;
+  
+  /* Background Colors */
+  --color-bg-light: #f5f4f0;
+  --color-bg-dark: #0d0d0d;
+  --color-bg-section: #f8f8f6;
+  --color-bg-card: #ffffff;
+  
+  /* Text Colors */
+  --color-text-main: #1a1a1a;
+  --color-text-muted: #666666;
+  
+  /* Border */
+  --color-border-color: #e5e5e5;
+  
+  /* Shadcn/ui theme colors - properly mapped to brand */
+  --color-background: #f5f4f0;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a1a;
+  --color-primary: #F37021;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f8f8f6;
+  --color-secondary-foreground: #1a1a1a;
+  --color-muted: #f8f8f6;
+  --color-muted-foreground: #666666;
+  --color-accent: #F37021;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #F37021;
+  
+  /* Radius */
+  --radius: 0.625rem;
+}
+
+body {
+  background: theme(--color-bg-light);
+  color: theme(--color-text-main);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-bg-light text-text-main;
+  }
+}

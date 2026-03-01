@@ -1,144 +1,36 @@
-# ZOOM Unisex Salon - Website Project
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## 🏗️ Professional Project Structure
+## Getting Started
 
-This project has been reorganized following senior frontend engineering best practices with a modular, maintainable architecture.
+First, run the development server:
 
-```
-zoom-saloon/
-├── assets/
-│   ├── css/
-│   │   ├── main.css          # Global styles, variables, header, footer, FAB
-│   │   ├── home.css          # Home page specific styles
-│   │   └── about.css         # About page specific styles
-│   └── js/
-│       ├── components.js     # Dynamic component loader
-│       └── main.js           # Core functionality (scroll, menu, FAB)
-├── components/
-│   ├── navbar.html           # Reusable navigation component
-│   ├── footer.html           # Reusable footer component
-│   └── fab.html              # Reusable floating action button
-├── index.html                # Home page
-├── about.html                # About page
-├── rates.html                # Rates & services page
-├── team.html                 # Team page
-└── booking.html              # Booking page
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 🎨 Architecture Overview
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Component-Based Design
-All pages use reusable components loaded dynamically:
-- **Navigation**: `<div data-component="navbar"></div>`
-- **Footer**: `<div data-component="footer"></div>`
-- **FAB**: `<div data-component="fab"></div>`
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### CSS Structure
-- **main.css**: Base styles, CSS variables, typography, buttons, navigation, footer, FAB
-- **page-specific.css**: Unique styles for each page (home.css, about.css, etc.)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### JavaScript Modules
-- **components.js**: Loads HTML components dynamically
-- **main.js**: Handles scroll effects, mobile menu, FAB interactions, active nav links
+## Learn More
 
-## 🚀 Key Features
+To learn more about Next.js, take a look at the following resources:
 
-### 1. Modular Components
-- Single source of truth for navigation, footer, and FAB
-- Update once, reflect everywhere
-- Easy to maintain and extend
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### 2. Separated Concerns
-- CSS variables for consistent theming
-- Page-specific styles isolated
-- JavaScript functionality modularized
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 3. Premium Design Maintained
-- All original premium aesthetics preserved
-- Smooth animations and transitions
-- Responsive mobile-first design
-- Professional hover effects
+## Deploy on Vercel
 
-### 4. Optimized Navigation
-- Removed redundant "Book Appointment" button from header
-- Streamlined menu structure
-- "Book Appointment" now integrated in main navigation
-- Clean, professional appearance
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## 📝 How to Add New Pages
-
-1. Create new HTML file with this structure:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title | ZOOM Unisex Salon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/your-page.css">
-</head>
-<body>
-    <div data-component="navbar"></div>
-    
-    <!-- Your page content -->
-    
-    <div data-component="footer"></div>
-    <div data-component="fab"></div>
-    
-    <script src="assets/js/components.js"></script>
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
-```
-
-2. Create page-specific CSS in `assets/css/your-page.css`
-3. Add navigation link in `components/navbar.html`
-
-## 🔧 How to Update Components
-
-### Update Navigation
-Edit `components/navbar.html` - changes reflect on all pages
-
-### Update Footer
-Edit `components/footer.html` - changes reflect on all pages
-
-### Update FAB
-Edit `components/fab.html` - changes reflect on all pages
-
-## 🎯 Benefits of This Structure
-
-1. **Maintainability**: Change once, update everywhere
-2. **Scalability**: Easy to add new pages and features
-3. **Consistency**: Guaranteed UI consistency across all pages
-4. **Performance**: Cached components load faster
-5. **Clean Code**: Separated concerns, no inline styles
-6. **Professional**: Industry-standard architecture
-
-## 💡 CSS Variables
-
-All brand colors and design tokens are centralized:
-```css
---bg-dark: #0a0a0a
---bg-card: #161616
---zoom-orange: #F37021
---zoom-orange-hover: #ff8640
---text-main: #ffffff
---text-muted: #a3a3a3
-```
-
-Update once in `assets/css/main.css` to change site-wide.
-
-## 🔄 Migration Notes
-
-- Original files backed up with `.backup` extension
-- All functionality preserved
-- Premium design maintained
-- Improved code organization
-- Better performance through separation
-
----
-
-**Built with precision by a senior frontend engineer**
-**Maintaining ZOOM's commitment to excellence**
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,0 +1,254 @@
+/* =================================================================
+   Team Page Specific Styles
+   ================================================================= */
+
+/* --- PAGE HERO --- */
+.page-hero {
+    padding: 180px 20px 100px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.page-hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- TEAM CATEGORY SECTION --- */
+.team-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text-main);
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.category-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+/* --- EDITORIAL LAYOUT (Senior Staff) --- */
+.editorial-profile {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: flex-start;
+}
+
+.editorial-profile:last-child {
+    margin-bottom: 0;
+}
+
+.profile-image {
+    flex: 0 0 400px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%) contrast(1.1);
+    transition: var(--transition);
+}
+
+.editorial-profile:hover .profile-image img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.03);
+}
+
+.profile-content {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.profile-content h3 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.profile-content .designation {
+    display: block;
+    color: var(--zoom-orange);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.profile-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.credentials {
+    margin: 30px 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-color);
+}
+
+.credentials li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.credentials li::before {
+    content: '✦';
+    color: var(--zoom-orange);
+    font-size: 0.7rem;
+    margin-right: 10px;
+}
+
+/* --- GRID LAYOUT (Assistants / Juniors) --- */
+.junior-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.junior-card {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+    border-radius: 6px;
+}
+
+.junior-card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+
+.junior-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.junior-card span {
+    color: var(--zoom-orange);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 576px) {
+    .page-hero {
+        padding: 180px 30px 100px;
+    }
+    
+    .team-section {
+        padding: 100px 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-hero {
+        padding: 180px 40px 100px;
+    }
+    
+    .page-hero h1 {
+        font-size: 3.5rem;
+    }
+    
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .team-section {
+        padding: 100px 40px;
+    }
+    
+    .category-title {
+        font-size: 2rem;
+        margin-bottom: 60px;
+    }
+    
+    .profile-content h3 {
+        font-size: 2.2rem;
+    }
+    
+    .profile-content p {
+        font-size: 1.05rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .page-hero {
+        padding: 180px 60px 100px;
+    }
+    
+    .team-section {
+        padding: 100px 60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .page-hero {
+        padding-top: 140px;
+        padding-bottom: 60px;
+    }
+
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .page-hero p {
+        font-size: 1rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+    }
+
+    .editorial-profile {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .profile-image {
+        flex: 0 0 350px;
+        width: 100%;
+        height: 400px;
+    }
+
+    .junior-grid {
+        grid-template-columns: 1fr;
+    }
+}
